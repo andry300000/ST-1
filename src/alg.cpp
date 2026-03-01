@@ -1,4 +1,5 @@
 // Copyright 2025 UNN-CS
+#include <cstddef>
 #include <cstdint>
 #include <vector>
 #include "alg.h"
@@ -20,7 +21,7 @@ uint64_t nPrime(uint64_t n) {
   if (n == 0) return 0;
   if (n == 1) return 2;
 
-  uint64_t count = 1; 
+  uint64_t count = 1;
   uint64_t candidate = 3;
   while (count < n) {
     if (checkPrime(candidate)) ++count;
@@ -56,7 +57,7 @@ uint64_t sumPrime(uint64_t hbound) {
   for (uint64_t i = 0; i < odd_count; ++i) {
     if (!is_prime_odd[static_cast<size_t>(i)]) continue;
     const uint64_t p = 2 * i + 3;
-    if (p > limit / p) break;  
+    if (p > limit / p) break;
 
     uint64_t start = (p * p - 3) / 2;
     for (uint64_t j = start; j < odd_count; j += p) {
@@ -64,7 +65,7 @@ uint64_t sumPrime(uint64_t hbound) {
     }
   }
 
-  uint64_t sum = 2;  
+  uint64_t sum = 2;
   for (uint64_t i = 0; i < odd_count; ++i) {
     if (is_prime_odd[static_cast<size_t>(i)]) sum += (2 * i + 3);
   }

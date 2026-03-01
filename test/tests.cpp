@@ -57,12 +57,12 @@ TEST(st1, sumPrime_boundaries) {
   EXPECT_EQ(0ULL, sumPrime(0));
   EXPECT_EQ(0ULL, sumPrime(1));
   EXPECT_EQ(0ULL, sumPrime(2));
-  EXPECT_EQ(2ULL, sumPrime(3));  // primes < 3: {2}
+  EXPECT_EQ(2ULL, sumPrime(3));
 }
 
 TEST(st1, sumPrime_small_values) {
-  EXPECT_EQ(17ULL, sumPrime(10));   // 2+3+5+7
-  EXPECT_EQ(77ULL, sumPrime(20));   // 2+3+5+7+11+13+17+19
+  EXPECT_EQ(17ULL, sumPrime(10));
+  EXPECT_EQ(77ULL, sumPrime(20));
 }
 
 TEST(st1, sumPrime1) {
