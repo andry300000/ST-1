@@ -20,7 +20,7 @@ uint64_t nPrime(uint64_t n) {
   if (n == 0) return 0;
   if (n == 1) return 2;
 
-  uint64_t count = 1;  // prime 2
+  uint64_t count = 1; 
   uint64_t candidate = 3;
   while (count < n) {
     if (checkPrime(candidate)) ++count;
@@ -35,7 +35,6 @@ uint64_t nextPrime(uint64_t value) {
   if (value == UINT64_MAX) return 0;
 
   uint64_t candidate = value + 1;
-  if (candidate <= 2) return 2;
   if (candidate % 2 == 0) ++candidate;
 
   while (candidate != 0) {
@@ -50,16 +49,14 @@ uint64_t sumPrime(uint64_t hbound) {
   if (hbound <= 2) return 0;
   if (hbound == 3) return 2;
 
-  // Sieve for odd numbers only: index i represents number (2*i + 3)
   const uint64_t limit = hbound - 1;
-  const uint64_t odd_count = (limit >= 3) ? ((limit - 3) / 2 + 1) : 0;
+  const uint64_t odd_count = (limit - 3) / 2 + 1;
   std::vector<uint8_t> is_prime_odd(static_cast<size_t>(odd_count), 1);
 
-  // For p = 2*i+3, mark multiples starting from p*p.
   for (uint64_t i = 0; i < odd_count; ++i) {
     if (!is_prime_odd[static_cast<size_t>(i)]) continue;
     const uint64_t p = 2 * i + 3;
-    if (p > limit / p) break;  // p*p > limit
+    if (p > limit / p) break;  
 
     uint64_t start = (p * p - 3) / 2;
     for (uint64_t j = start; j < odd_count; j += p) {
@@ -67,7 +64,7 @@ uint64_t sumPrime(uint64_t hbound) {
     }
   }
 
-  uint64_t sum = 2;  // prime 2
+  uint64_t sum = 2;  
   for (uint64_t i = 0; i < odd_count; ++i) {
     if (is_prime_odd[static_cast<size_t>(i)]) sum += (2 * i + 3);
   }
